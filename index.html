@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Visitantes - Parque Nacional Cotopaxi</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- ESTILOS PARA LA IMAGEN DE FONDO -->
+    <style>
+        body {
+            /* Carga la imagen de fondo desde la carpeta img y aplica un filtro oscuro para legibilidad */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/cotop.jpg');
+            background-size: cover;          /* Cubre toda la pantalla */
+            background-position: center;     /* Centra la imagen */
+            background-attachment: fixed;    /* Fija el fondo al hacer scroll */
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                
+                <!-- TARJETA DEL FORMULARIO -->
+                <div class="card shadow-lg border border-secondary-subtle rounded-4 bg-dark bg-opacity-75 backdrop-blur">
+                    
+                    <!-- HEADER / ENCABEZADO -->
+                    <div class="card-header bg-transparent text-center py-4 border-bottom border-secondary-subtle">
+                        <img src="img/coto.jpg" width="180" height="auto" alt="Cotopaxi" class="mb-3 img-fluid">
+                        <h2 class="h3 fw-bold text-light">Encuesta de Visitantes</h2>
+                        <p class="text-body-secondary mb-0">Parque Nacional Cotopaxi</p>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5">
+                        <form action="/enviar" method="POST">
+
+                            <!-- Nombre y Apellido -->
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="nombre" class="form-label fw-semibold">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido" class="form-label fw-semibold">Apellido:</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                                </div>
+                            </div>
+
+                            <!-- Correo electrónico -->
+                            <div class="mb-4">
+                                <label for="correo" class="form-label fw-semibold">Correo electrónico:</label>
+                                <input type="email" class="form-control" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+                            </div>
+
+                            <!-- Fecha estimada de visita -->
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="birthday" class="form-label fw-semibold">Fecha de visita:</label>
+                                    <input type="date" class="form-control" id="birthday" name="birthday">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="edad" class="form-label fw-semibold">Edad:</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" min="10" max="100" placeholder="Ej. 25">
+                                </div>
+                            </div>
+
+                            <!-- Procedencia -->
+                            <div class="mb-4">
+                                <label for="procedencia" class="form-label fw-semibold">Ciudad o país de procedencia:</label>
+                                <input type="text" class="form-control" id="procedencia" name="procedencia" placeholder="Ej. Quito, Ecuador">
+                            </div>
+
+                            <hr class="my-4 border-secondary-subtle">
+
+                            <!-- ¿Cómo planeas realizar tu viaje? -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold mb-2">¿Cómo planeas realizar tu viaje?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="compania1" name="compania" value="solitario">
+                                    <label class="form-check-label" for="compania1">Viaje en solitario</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="compania2" name="compania" value="pareja">
+                                    <label class="form-check-label" for="compania2">En pareja</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="compania3" name="compania" value="familia">
+                                    <label class="form-check-label" for="compania3">En familia con niños</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="compania4" name="compania" value="amigos">
+                                    <label class="form-check-label" for="compania4">Con un grupo de amigos</label>
+                                </div>
+                            </div>
+
+                            <!-- Actividades -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold mb-2">¿Qué actividades principales te gustaría realizar? (Selecciona varias)</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="act1" name="actividades" value="senderismo">
+                                    <label class="form-check-label" for="act1">Senderismo hacia la Laguna de Limpiopungo</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="act2" name="actividades" value="refugio">
+                                    <label class="form-check-label" for="act2">Intento de ascenso al Refugio José Rivas</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="act3" name="actividades" value="ciclismo">
+                                    <label class="form-check-label" for="act3">Ciclismo de montaña</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="act4" name="actividades" value="fotografia">
+                                    <label class="form-check-label" for="act4">Fotografía de paisajes y fauna</label>
+                                </div>
+                            </div>
+
+                            <!-- Transporte -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold mb-2">¿En qué medio de transporte planeas llegar?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="trans1" name="transporte" value="propio">
+                                    <label class="form-check-label" for="trans1">Vehículo propio (4x4)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="trans2" name="transporte" value="alquilado">
+                                    <label class="form-check-label" for="trans2">Vehículo alquilado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="trans3" name="transporte" value="publico">
+                                    <label class="form-check-label" for="trans3">Transporte público</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="trans4" name="transporte" value="tour">
+                                    <label class="form-check-label" for="trans4">Tour contratado</label>
+                                </div>
+                            </div>
+
+                            <!-- Experiencia previa -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold mb-2">¿Cómo calificarías tu experiencia previa en alta montaña?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="exp1" name="experiencia" value="principiante">
+                                    <label class="form-check-label" for="exp1">Principiante (nunca he estado a esa altura)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="exp2" name="experiencia" value="intermedio">
+                                    <label class="form-check-label" for="exp2">Intermedio (caminatas moderadas previas)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="exp3" name="experiencia" value="avanzado">
+                                    <label class="form-check-label" for="exp3">Avanzado (acostumbrado a cumbres)</label>
+                                </div>
+                            </div>
+
+                            <!-- Comentarios -->
+                            <div class="mb-4">
+                                <label for="comentarios" class="form-label fw-semibold">Comentarios o requerimientos especiales:</label>
+                                <textarea class="form-control" id="comentarios" name="comentarios" rows="4" placeholder="Restricciones alimentarias, dudas, etc."></textarea>
+                            </div>
+
+                            <!-- Botón de envío -->
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold shadow">Enviar encuesta completa</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
